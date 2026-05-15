@@ -7,6 +7,7 @@ This is the Streamlit-based frontend for the **AI Travel Orchestrator**. It prov
 - **AI Package Display**: Beautifully rendered city cards with AI-generated summaries.
 - **Interactive Chat**: Refine your trip in real-time using natural language.
 - **Sequential Itinerary**: View your final plan as an expandable day-by-day itinerary.
+- **Session Persistence**: Switch between different travel planning sessions without losing progress.
 
 ## 🚀 Getting Started
 
@@ -28,7 +29,7 @@ streamlit run app.py
 ```
 
 ## ☁️ Deployment
-This app is ready for **Streamlit Cloud**.
+This app is ready for **Streamlit Cloud** or **Azure App Service**.
 1. Push this folder to a GitHub repository.
-2. Connect the repo to Streamlit Cloud.
-3. Add the `BACKEND_URL` to the **Secrets** section in Streamlit Cloud.
+2. Connect the repo to your hosting provider.
+3. Add the `BACKEND_URL` to the **Secrets** or **Environment Variables** section.

@@ -515,6 +515,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                 if not raw_val:
                     st.info("No response received from the agent.")
                     return
+                raw_val_br = str(raw_val).replace("\n", "<br>")
                 if "Error" in raw_val or "failed" in raw_val or "could not convert" in raw_val:
                     st.error(f"❌ **Agent execution notice:** {raw_val}")
                     return
@@ -1043,7 +1044,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
 <div class='travel-card' style='border-left: 5px solid #a855f7; padding: 15px;'>
     <div class='card-title' style='color: #a855f7;'>🎫 PNR Passenger Status Response</div>
     <p style='margin-top: 10px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;'>
-        {raw_val.replace('\n', '<br>')}
+        {raw_val_br}
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -1086,7 +1087,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                     st.markdown(f"""
                     <div class='travel-card' style='border-left: 5px solid #38bdf8; padding: 15px;'>
                         <div style='font-size: 0.95rem; color: #e2e8f0; line-height: 1.5;'>
-                            {raw_val.replace('\n', '<br>')}
+                            {raw_val_br}
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -1124,7 +1125,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                     <div class='travel-card' style='border-left: 5px solid #0ea5e9; padding: 15px;'>
                         <div class='card-title' style='color: #0ea5e9;'>🌤️ Live Weather Assessment Report</div>
                         <p style='margin-top: 10px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;'>
-                            {raw_val.replace('\n', '<br>')}
+                            {raw_val_br}
                         </p>
                     </div>
                     """, unsafe_allow_html=True)
@@ -1140,7 +1141,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                     <div class='travel-card' style='border-left: 5px solid #38bdf8; padding: 15px;'>
                         <div class='card-title' style='color: #38bdf8;'>✈️ Flight Agent Search Bulletin</div>
                         <p style='margin-top: 10px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;'>
-                            {raw_val.replace('\n', '<br>')}
+                            {raw_val_br}
                         </p>
                     </div>
                     """, unsafe_allow_html=True)
@@ -1152,7 +1153,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                     <div class='travel-card' style='border-left: 5px solid #a855f7; padding: 15px;'>
                         <div class='card-title' style='color: #a855f7;'>🚆 Express Rail Route Bulletin</div>
                         <p style='margin-top: 10px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;'>
-                            {raw_val.replace('\n', '<br>')}
+                            {raw_val_br}
                         </p>
                     </div>
                     """, unsafe_allow_html=True)
@@ -1163,7 +1164,7 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                 <div class='travel-card' style='border-left: 5px solid #64748b; padding: 15px;'>
                     <div class='card-title' style='color: #94a3b8;'>📋 Agent Search Report Info</div>
                     <p style='margin-top: 10px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;'>
-                        {raw_val.replace('\n', '<br>')}
+                        {raw_val_br}
                     </p>
                 </div>
                 """, unsafe_allow_html=True)

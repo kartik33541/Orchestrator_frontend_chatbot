@@ -1599,12 +1599,16 @@ for msg_idx, msg in enumerate(st.session_state.chat_history):
                         acts = day.get('activities', '')
                         
                         if weather or hotel or acts:
+                            weather_html = f"<div style='flex: 1; min-width: 200px;'><strong>🌤️ Weather:</strong> <span style='color: #cbd5e1;'>{weather}</span></div>" if weather else ""
+                            hotel_html = f"<div style='flex: 1; min-width: 200px;'><strong>🏨 Stay:</strong> <span style='color: #cbd5e1;'>{hotel}</span></div>" if hotel else ""
+                            acts_html = f"<div style='flex: 1; min-width: 200px;'><strong>🎯 Highlights:</strong> <span style='color: #cbd5e1;'>{acts}</span></div>" if acts else ""
+                            
                             html_header = f"""
                             <div style='background-color: #1e293b; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6; margin-bottom: 20px;'>
                                 <div style='display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;'>
-                                    {f"<div style='flex: 1; min-width: 200px;'><strong>🌤️ Weather:</strong> <span style='color: #cbd5e1;'>{weather}</span></div>" if weather else ""}
-                                    {f"<div style='flex: 1; min-width: 200px;'><strong>🏨 Stay:</strong> <span style='color: #cbd5e1;'>{hotel}</span></div>" if hotel else ""}
-                                    {f"<div style='flex: 1; min-width: 200px;'><strong>🎯 Highlights:</strong> <span style='color: #cbd5e1;'>{acts}</span></div>" if acts else ""}
+                                    {weather_html}
+                                    {hotel_html}
+                                    {acts_html}
                                 </div>
                             </div>
                             """

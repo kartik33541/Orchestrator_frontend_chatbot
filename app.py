@@ -9,6 +9,25 @@ load_dotenv()
 
 st.set_page_config(page_title="AI Travel Orchestrator", layout="wide", page_icon="✈️")
 
+# --- Logic App Wake Hook ---
+LOGIC_APP_WAKE_URL = os.getenv("LOGIC_APP_WAKE_URL", "https://prod-48.eastus2.logic.azure.com:443/workflows/9ce4b3acb0a34089a7abc79032e817f0/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=2n6mXWaQpdKEMWbhj3pVrGCwwpoaCAvvvgh58IArRoY")
+
+@st.cache_data(ttl=300)
+def wake_backend_sync(url):
+    if not url:
+        return
+    try:
+        response = requests.post(url, json={"source": "website"}, timeout=180)
+        return response.json()
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+if "backend_woken" not in st.session_state:
+    if LOGIC_APP_WAKE_URL:
+        with st.spinner("Warming up backend, please wait..."):
+            wake_backend_sync(LOGIC_APP_WAKE_URL)
+    st.session_state.backend_woken = True
+
 # --- Configuration & State Initialization ---
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 USER_ID = "default_user_1" 
